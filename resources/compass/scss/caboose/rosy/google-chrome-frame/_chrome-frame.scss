@@ -1,0 +1,164 @@
+/*
+File: _chrome-frame.scss
+
+Description:
+	Chrome Frame styles
+
+Requires:
+	- Sass
+	- Compass
+
+*/
+
+// Move images from caboose/rosy/google-chrome-frame/images to your images_dir folder.
+// Then @import from your ie.scss file
+
+$cf-font-family: bold Arial;
+$cf-foreground-color: #bbc3c6 !default;
+$cf-background-color: #111 !default;
+$cf-ie9-transparent-background: "global/bg-chrome-frame-ie9.png" !default;
+$cf-chrome-icon: "global/icon-chrome-frame-chrome.png" !default;
+$cf-safari-icon: "global/icon-chrome-frame-safari.png" !default;
+$cf-firefox-icon: "global/icon-chrome-frame-firefox.png" !default;
+
+.chromeFrameOverlayCloseBar {
+	display: none;
+}
+
+#chrome-frame {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: fixed;
+	letter-spacing: 0;
+	z-index: 1000;
+	font: $cf-font-family;
+	color: $cf-foreground-color;
+	background: inline-image($cf-ie9-transparent-background);
+
+	* {
+		@include box-sizing(content-box);
+	}
+
+	.cf-wrap {
+		$height: 407px;
+
+		margin-top: -($height / 2);
+		left: 0;
+		top: 50%;
+		width: 100%;
+		height: $height;
+		position: absolute;
+	}
+
+	.cf-content-wrap {
+		padding: 0 20px 20px;
+		margin: 0 auto;
+		width: 920px;
+		border: 1px solid;
+		overflow: hidden;
+		background: $cf-background-color;
+	}
+
+	p {
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	h1 {
+		display: block;
+		width: 100%;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	.callout {
+		float: left;
+		width: 558px;
+
+		> a {
+			float: right;
+			margin: 0 5px 5px;
+			@include inline-block;
+			padding: 0 17px;
+			height: 30px;
+			line-height: 30px;
+			background: $cf-background-color;
+			border: 1px solid;
+		}
+	}
+
+	h2 {
+		float: left;
+		margin: 0 0 30px;
+		font-size: 28px;
+	}
+
+	.content {
+		padding: 0;
+
+		p {
+			float: left;
+			padding-right: 20px;
+			width: 315px;
+		}
+
+		.callout {
+			padding-left: 20px;
+			border-left: 1px solid;
+		}
+	}
+
+	.choices {
+		clear: both;
+
+		h3, ul {
+			float: left;
+		}
+
+		h3 {
+			text-align: left;
+		}
+
+		ul {
+			float: right;
+			margin-top: -13px;
+		}
+
+		li {
+			margin-left: 10px;
+			@include inline-block;
+		}
+
+		a {
+			width: 43px;
+			height: 43px;
+			display: block;
+			font: 0/0 a;
+			text-shadow: none;
+			color: transparent;
+			border: 1px solid;
+		}
+
+		.chrome {
+			background: image-url($cf-chrome-icon);
+		}
+
+		.safari {
+			background: image-url($cf-safari-icon);
+		}
+
+		.firefox {
+			background: image-url($cf-firefox-icon);
+		}
+	}
+
+	&.hidden {
+		display: none;
+	}
+
+	&.lt-ie9 {
+		background: $cf-background-color;
+	}
+}

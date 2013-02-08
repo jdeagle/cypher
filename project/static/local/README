@@ -1,0 +1,7 @@
+This folder contains static files that are meant to be hosted by the same server hosting the web application, such as favicon.ico, robots.txt and crossdomain.xml.
+
+Also, static assets for the Django admin should be stored here, as they do not need be served from a different server.
+
+Files in this folder will never be hosted on a different server (such as S3 or a CDN), as opposed to files stored in the "static/" folder.
+
+

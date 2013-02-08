@@ -1,0 +1,4 @@
+@mixin grad($top, $btm) {
+	background-color: mix($top, $btm);
+	@include background-image(linear-gradient($top, $btm));
+}

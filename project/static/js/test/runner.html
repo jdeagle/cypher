@@ -1,0 +1,125 @@
+<!doctype html>
+	<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>OxBlood Unit Tests</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="lib/mocha/css/mocha.css" />
+
+		<meta property="ga:property_id" content="UA-26918715-3"/>
+		<meta property="ga:domain" content="none"/>
+
+		<meta property="fb:app_id" content="256785791077665" />
+		<meta property="og:title" content="" />
+		<meta property="og:image" content="" />
+		<meta property="og:site_name" content="" />
+		<meta property="og:description" content="" />
+		<meta property="og:url" content="" />
+		<meta property="og:type" content="" />
+		<meta property="og:locale" content="en_us" />
+
+		<script src="../libs/modernizr.js"></script>
+
+		<style id="caboose">
+			#chrome-frame {
+				display: none;
+			}
+
+			#caboose {
+				-webkit-animation-duration: 0.75s;
+				-moz-animation-duration: 0.75s;
+				animation-duration: 0.75s;
+				-webkit-animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+				-moz-animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+				animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+				-webkit-animation-delay: 0.1875s;
+				-moz-animation-delay: 0.1875s;
+				animation-delay: 0.1875s;
+			}
+		</style>
+	</head>
+	<body class="page" data-page-class="Page">
+
+		<!-- Mocha JS -->
+		<div id="mocha"></div>
+		<!-- End Mocha JS -->
+
+		<!-- Require JS -->
+		<script src="../libs/require.js"></script>
+		<script src="../config.js"></script>
+		<script>
+			require.config({
+				baseUrl : (function () {
+					var path = window.location.pathname;
+					return path.replace("test/runner.html", "");
+				}()),
+				paths: {
+					"OxBlood": "test/oxblood/OxBlood",
+					"JSHint": "http://www.jshint.com/src/js/jshint",
+					"core": "test/oxblood/core",
+					"models": "test/oxblood/models",
+					"routing": "test/oxblood/routing",
+					"modules": "test/oxblood/modules",
+					"quality": "test/oxblood/quality"
+				},
+				shim: {
+					"JSHint": {
+						exports: "JSHINT"
+					}
+				},
+				urlArgs : "cacheBust=" + (new Date()).getTime()
+			});
+		</script>
+		<!-- End Require JS -->
+
+		<script>
+			require([
+				"OxBlood",
+
+				"core/Initialization",
+				"core/Notifications",
+				"core/PseudoEvents",
+				"core/ExternalLibs",
+				"core/Inheritance",
+				"core/Destruction",
+				"core/Timers",
+				"core/Scope",
+
+				"models/Model",
+
+				"modules/caboose/Caboose",
+				"modules/custom-form-field/CustomFormField",
+				"modules/google-chrome-frame/ChromeFrame",
+				"modules/ios-page-control/PageControl",
+				"modules/scroller/Scroller",
+				//"modules/social/FacebookSocial",
+				//"modules/social/TwitterSocial",
+				"modules/ticker/Ticker",
+				"modules/tracking/GATracking",
+				"modules/tracking/OmnitureTracking",
+
+				"quality/JSHint",
+
+				"routing/Routing",
+				"$"
+
+			], function (OxBlood) {
+				OxBlood.registerTests();
+
+				$(document).ready(function () {
+					if (window.mochaPhantomJS) {
+						mochaPhantomJS.run();
+					} else {
+						var runner = mocha.run();
+						BUNYIP.hookup(runner);
+					}
+				});
+			});
+
+		</script>
+
+	</body>
+</html>

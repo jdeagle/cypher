@@ -1,0 +1,4 @@
+%scrollable {
+	overflow: auto;
+	@include experimental(overflow-scrolling, touch);
+}

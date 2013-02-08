@@ -1,0 +1,27 @@
+/*
+File: ie.scss
+Outputs: ie.css
+
+Project: RED
+
+Description:
+	IE styles
+
+Requires:
+	- Sass <http://sass-lang.com/>
+	- Compass <http://compass-style.org/>
+
+*/
+
+// Rosy Imports
+// For use with https://github.com/ff0000/rosy
+// @import "rosy/google-chrome-frame/chrome-frame";
+
+// Styles for IE7 and below
+.lt-ie8 {}
+
+// Styles for IE8 and below
+.lt-ie9 {}
+
+// Styles for IE9
+.ie9 {}

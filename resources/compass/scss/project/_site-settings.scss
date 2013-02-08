@@ -1,0 +1,58 @@
+// File: project/site-settings
+// Imported by: style.scss
+//
+// Description:
+// 	Base project settings
+//
+// Requires:
+// 	- Sass
+// 	- Compass
+
+// First, import easings from caboose
+@import "caboose/easings";
+
+// When $DEBUG is true, animation is slowed x5
+$DEBUG: false !default;
+
+// Not targeting Opera or KHTML
+$experimental-support-for-opera: false !default;
+$experimental-support-for-khtml: false !default;
+
+// OR IE 6
+$legacy-support-for-ie6: false !default;
+
+// OR IE 7
+$legacy-support-for-ie7: false !default;
+
+// Sample Defaults
+$foreground-color: #fff !default;
+$background-color: #fff !default;
+$text-color: #000 !default;
+$link-color: #000 !default;
+
+// Useful for letter-spacing: $global-kern-value;
+$global-kern-value: 0 !default;
+
+// A set of parameters for your CSS transitions / animations
+// If you base your animation values entirely off of these variables
+// you can really improve your debugging experience.
+//
+// Example:
+// @include transition(transform $global-animation-duration $global-animation-easing)
+//
+// Quicker transition time:
+// @include transition(transform ($global-animation-duration * 0.5) $global-animation-easing)
+
+// Global animation duration
+$global-animation-duration: 10s !default;
+
+// Global animation easing
+$global-animation-easing: $ease-out-quint !default;
+
+// Global animation delay
+$global-animation-delay: ($global-animation-duration * 0.25) !default;
+
+// When $DEBUG is true, slow down global animation duration for debugging purposes
+@if $DEBUG {
+	$global-animation-duration: ($global-animation-duration * 5) !default;
+}

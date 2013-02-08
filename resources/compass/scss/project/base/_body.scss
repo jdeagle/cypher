@@ -1,0 +1,95 @@
+// File: project/base/globals
+// Imported by: style.scss
+//
+// Description:
+// 	General global styling
+//
+// Requires:
+// 	- Sass
+// 	- Compass
+
+html {}
+
+body {
+	@extend %debug !optional;
+}
+
+a {}
+
+@font-face {
+  font-family: 'standard';
+  src: url('fonts/stan0756.eot'); /* IE9 Compat Modes */
+  src: url('fonts/stan0756.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/stan0756.woff') format('woff'), /* Modern Browsers */
+       url('fonts/stan0756.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/stan0756.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+#main {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 20px;
+
+	font-family: Helvetica, Arial, sans-serif;
+
+	h1, h2, h3 {
+		//padding: 20px;
+	}
+
+	h1 {
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	h2 {
+		padding: 10px 0px;
+	}
+
+	h3, .test {
+		display: block;
+		padding: 50px;
+		//position: absolute;
+		//top: 100px;
+		//left: 100px;
+		font-size : 8px;
+		//margin-left: -250px;
+		//margin : 0 auto;
+		//width: 500px;
+		//text-align: center;
+		text-transform: uppercase;
+		font-family: "standard";
+	}
+
+	.test {
+		width: 400px;
+		line-height: 10px;
+		padding: 20px 50px;
+	}
+
+	h4 {
+		padding: 10px 0px;
+		font-size: 12px;
+	}
+
+	.code {
+		background: #f9f9f9;
+		font-family: Courier, monospace, serif;
+		font-size: 12px;
+		padding: 10px;
+
+		span {
+			padding-left: 30px;
+
+			&.i {
+				padding-left: 60px;
+			}
+		}
+	}
+}
+

@@ -1,0 +1,4 @@
+@mixin ie-friendly-transform($transform) {
+	@include experimental(transform, $transform, -moz, not -webkit, -o, -ms, not -khtml, official);
+	@include experimental(transform, $transform translateZ(0), -moz, -webkit, -o, -ms, not -khtml, official);
+}

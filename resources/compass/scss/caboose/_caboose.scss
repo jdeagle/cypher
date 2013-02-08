@@ -1,0 +1,30 @@
+// File: caboose/caboose
+// Imported by: style.scss
+//
+// Description:
+// 	Base caboose imports
+//
+// Requires:
+// 	- Sass
+// 	- Compass
+
+// Core imports
+@import "compass";
+
+// Default project mixins
+@import "mixins/animation",
+		"mixins/experimental-both",
+		"mixins/grad",
+		"mixins/ie-friendly-transform",
+		"mixins/mask-image",
+		"mixins/respond-to",
+		"mixins/truncate";
+
+// Default project placeholders
+@import "placeholders/debug",
+		"placeholders/global-transition",
+		"placeholders/magic-bullet-fix",
+		"placeholders/microfix",
+		"placeholders/position-zero",
+		"placeholders/scrollable",
+		"placeholders/typeface";

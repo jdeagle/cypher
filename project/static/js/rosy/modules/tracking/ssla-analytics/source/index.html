@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Omniture Example</title>
+<style type="text/css">
+a {
+	cursor:pointer;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="analytics.js"></script>
+<script src="omniture.library.example.js"></script>
+<script src="s_code.js"></script>
+</head>
+<body>
+<a omni="trackLink1" target="_blank">trackLink 1</a> | <a omni="trackLink2" target="_blank">trackLink 2</a> | <a omni="custom" target="_blank">trackLink Custom</a>
+
+<script type="text/javascript">
+
+/* Init Omniture Tracker */
+var tracker = new ssla.analytics.Omniture(library,s);
+
+
+jQuery(document).ready(function(){
+
+	tracker.sendId("track");
+
+	$("a[omni]").click(
+		function(){
+			var id = $(this).attr("omni");
+			switch(id){
+				case "custom":
+					var obj = tracker.getItem("custom");
+					var section = "Game";
+					var prop46 = obj.prop46;
+					obj.prop46 = prop46.split("[section]").join(section);
+					var n = obj.name;
+					obj.name = n.split("[section]").join(section.toLowerCase());
+					tracker.send(obj);
+					break;
+				default:
+					tracker.sendId(id);
+					break;
+			}
+		}
+	);
+});
+</script>
+</body>
+</html>

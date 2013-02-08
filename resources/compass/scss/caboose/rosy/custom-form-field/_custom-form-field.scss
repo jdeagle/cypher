@@ -1,0 +1,132 @@
+/*
+File: _custom-form-field.scss
+
+Description:
+	Custom Form Field styles
+
+Requires:
+	- Sass
+	- Compass
+
+*/
+
+// @import from your style.scss file
+
+// Note: Namespaced style. Probably best to not change this unless you're also changing it in custom-form-field.js
+$class: "customfield";
+
+// Note: Functional styles. Your custom styles should follow after this block
+.#{$class} {
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+	input[type="radio"], input[type="checkbox"] {
+		position: absolute;
+		visibility: hidden;
+	}
+
+	&.#{$class}-select {
+		position: relative;
+
+		select {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			opacity: 0;
+		}
+
+		ul {
+			top: 100%;
+			left: 0;
+			position: absolute;
+			display: none;
+			list-style: none;
+		}
+
+		.#{$class}-current, li {
+			display: block;
+			white-space: nowrap;
+		}
+
+		&.#{$class}-select-active {
+			position: relative;
+			z-index: 10;
+
+			ul {
+				display: block;
+			}
+		}
+	}
+
+	&.#{$class}-custom-select {
+		select {
+			visibility: hidden;
+		}
+	}
+
+	&.#{$class}-radio, &.#{$class}-checkbox {
+		position: relative;
+	}
+}
+
+// Note: The Custom Form Field module wraps these in classes as well.
+// However, you can choose not to target them by class and instead target each input
+// Pro: No "Flash of Unstyled Content" while the plugin instantiates
+// Con: Unable to use the extra elements the plugin generates
+[type="text"], [type="password"], [type="search"], textarea {}
+
+// Note: For the perfectionist, style input placeholders accordingly
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {}
+input:-moz-placeholder, textarea:-moz-placeholder {}
+
+// Note: Design styles go here.
+.#{$class} {
+
+	// Protip: Be as specific as possible. You'll thank yourself when specificity issues pop up down the line.
+
+	// Note: Styles for custom drop downs
+	&.#{$class}-select {
+
+		// Note: Targets currently selected option, custom drop down options
+		.#{$class}-current, li {}
+
+		// Note: Styles for generated list in custom drop down
+		ul {}
+
+		// Note: Styles for generated list items in custom drop down
+		li {
+
+			// Note: Hover styles for list items
+			&:hover {}
+		}
+
+		// Note: Styles for currently selected drop down item
+		&.#{$class}-select-active {}
+	}
+
+	// Note: Styles for custom radio/checkbox inputs
+	&.#{$class}-radio, &.#{$class}-checkbox {
+
+		// Note: Hover styles for radios/checkboxes
+		&.#{$class}-hover {}
+
+		// Note: Active styles for radios/checkboxes
+		&.#{$class}-active {}
+
+		// Note: Checked styles for radios/checkboxes
+		&.#{$class}-checked {
+
+			// Note: You can use :after tp add a checkbox icon
+			&:after {}
+
+			// Note: For the perfectionist, you can add a different style for the "unchecking active" state
+			&.#{$class}-active {}
+		}
+	}
+
+	// Note: Styles for custom radio inputs
+	&.#{$class}-radio {}
+}

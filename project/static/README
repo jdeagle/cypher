@@ -1,0 +1,3 @@
+This folder contains static files that are meant to be hosted on a CDN, as opposed to files in the "static-local/" folder, which will always remain in the same server as the rest of the code.
+
+
