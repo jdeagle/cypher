@@ -94,7 +94,7 @@ TODO: add ignore spaces
 						methods.offset.apply(this);
 						break;
 					case Schemes.timed :
-						console.log("timed decode");
+						//console.log("timed decode");
 						methods.offset.apply(this);
 						break;
 				}
@@ -174,7 +174,7 @@ TODO: add ignore spaces
 					// cancel cycle
 					window.clearInterval(vars.cycle);
 
-					console.log(config.endText);
+					//console.log(config.endText);
 
 					this.text(config.endText);
 
@@ -298,10 +298,10 @@ TODO: add ignore spaces
 					encodedStr = [],
 					characters = config.characters = this.shuffle(config.characters);
 
-				console.log(characters);
+				//console.log(characters);
 
 				for (var i = 0; i < length; i++) {
-					console.log(characters.length, i, length);
+					//console.log(characters.length, i, length);
 					if (i >= characters.length) {
 						encodedStr.push(characters[methods.getRandomInt(0, characters.length - 1)].toLowerCase());
 					} else {

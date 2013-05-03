@@ -66,8 +66,25 @@ a {}
 		font-family: "standard";
 	}
 
+	.replay-button {
+		position: relative;
+		padding: 10px;
+		@include border-radius(4px);
+		background: #96fab9;
+		color: #07a14f;
+		width: 150px;
+		text-align: center;
+		cursor:pointer;
+		left: 500px;
+		margin-bottom: 40px;
+		&:hover {
+			color: #000;
+		}
+	}
+
 	.test {
 		width: 400px;
+		height: 150px;
 		line-height: 10px;
 		padding: 20px 50px;
 	}

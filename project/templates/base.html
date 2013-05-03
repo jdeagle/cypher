@@ -53,38 +53,7 @@
 			});
 
 
-			require(["jquery", "cypher"], function($) {
-			    //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
-			    $(function() {
-			    	$(".test").cypher('decode', {scheme: "offset", animate: "random"});
-
-					$(".guess").cypher('decode', {scheme: "guess"});
-					$(".offset").cypher('decode', {scheme: "offset"});
-					$(".offset-right").cypher('decode', {scheme: "offset", animate: "rightToLeft"});
-					$(".offset-center-out").cypher('decode', {scheme: "offset", animate: "centerOut"});
-					$(".offset-center-in").cypher('decode', {scheme: "offset", animate: "centerIn"});
-					$(".offset-random").cypher('decode', {scheme: "offset", animate: "random"});
-					//$(".timed").cypher('decode', {scheme: "timed", duration:2000});
-					$(".delayed").cypher('decode', {delay: 2000});
-					$(".cycle").cypher('decode', {delay: 2000, cycle: true});
-
-					$(".encode").cypher('encode', {scheme: "offset", animate: "random"});
-
-					$(".promise").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {
-							console.log("promise - done encoding!");
-					});
-
-					$(".chain").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {
-						console.log("chain - done encoding!");
-						var endText = "This is my new message";
-						$(".chain").cypher('decode', {
-							endText: endText,
-							scheme: "offset",
-							animate: "random"
-						});
-					});
-				});
-			});
+			{% block js %}{% endblock js %}
 		</script>
 	</body>
 </html>

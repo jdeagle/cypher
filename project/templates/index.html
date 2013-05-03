@@ -1,73 +1,46 @@
 {% extends "base.html" %}
 
+{% block page_class %}home{% endblock page_class %}
+
 {% block content %}
-<h1>Decode Animation tests</h1>
+<h1>This is CYPHER</h1>
+<p>Its a flexible jquery pluggin for cycling through bodies of text.</p>
 
-<h2>Large block of text</h2>
-<p class="test">This is a large block of text. Lets see how well it decodes. Hopefully it won't take longer than it does for halflife 3 to come out.</p>
-
-<h2>Guess</h2>
-<p class="code">$(".guess").cypher('decode', {scheme: "guess"});</p>
-<h3 class="demo guess">Super secret decoded message for you</h3>
-
-<h2>Offset</h2>
-<h4>Left to right:</h4>
-<p class="code">$(".offset").cypher('decode', {scheme: "offset"});</p>
-<h3 class="demo offset">Super secret decoded message for you</h3>
-
-<h4>Right to left:</h4>
-<p class="code">$(".offset-right").cypher('decode', {scheme: "offset", animate: "rightToLeft"});</p>
-<h3 class="demo offset-right">Super secret decoded message for you</h3>
-
-<h4>Center out:</h4>
-<p class="code">$(".offset-center-out").cypher('decode', {scheme: "offset", animate: "centerOut"});</p>
-<h3 class="demo offset-center-out">Super secret decoded message for you</h3>
-
-<h4>Center in:</h4>
-<p class="code">$(".offset-center-in").cypher('decode', {scheme: "offset", animate: "centerIn"});</p>
-<h3 class="demo offset-center-in">Super secret decoded message for you</h3>
-
-<h4>Random:</h4>
-<p class="code">$(".offset-random").cypher('decode', {scheme: "offset", animate: "random"});</p>
-<h3 class="demo offset-random">Super secret decoded message for you</h3>
-
-<!--
-<h2>Timed</h2>
-<p class="code">$(".timed").cypher('decode', {scheme: "timed", duration:2000});</p>
-<h3 class="demo timed">Super secret decoded message for you</h3>
-!-->
-
-<h2>delayed start</h2>
-<p class="code">$(".delayed").cypher('decode', {delay: 2000});</p>
-<h3 class="demo delayed">Super secret decoded message for you</h3>
-
-<h2>cycle with delay</h2>
-<p class="code">$(".cycle").cypher('decode', {delay: 2000, cycle: true});</p>
-<h3 class="demo cycle">Super secret decoded message for you</h3>
+<a href="/demo.html">demo</a>
+<a href="http://github.com/jdeagle/cypher" target="_blank">download</a>
 
 
-<h1>Encode Animation tests</h1>
-<h2>encode</h2>
-<p class="code">$(".encode").cypher('encode', {scheme: "offset", animate: "random"});</p>
-<h3 class="demo encode">Super secret decoded message for you</h3>
-
-<h2>promise</h2>
-<p class="code">$(".promise").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {
-							console.log("promise - done encoding!");
-					});</p>
-<h3 class="demo promise">Super secret decoded message for you</h3>
-
-<h2>chain</h2>
-<p class="code">$(".chain").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {<br>
-	<span>console.log("chain - done encoding!");</span><br>
-	<span>var endText = "This is my new message";</span><br>
-	<span>$(".chain").cypher('decode', {</span><br>
-		<span class="i">endText: endText,</span><br>
-		<span class="i">scheme: "offset",</span><br>
-		<span class="i">animate: "random"</span><br>
-	<span>});</span><br>
-});</p>
-<h3 class="demo chain">Super secret decoded message for you</h3>
+{% endblock %}
 
 
+{% block js %}
+require(["jquery", "cypher"], function($) {
+
+	var bodyCopy = $("p").text();
+
+	$("h1").cypher('decode', {scheme: "offset"});
+	$("p").cypher('decode', {scheme: "offset", animate: "centerOut"}).done(function() {
+		pause();
+	});
+
+	var pause = function() {
+		console.log("pause");
+		setTimeout(function () {
+			console.log("cycle");
+			cycle();
+		}, 2000);
+	}
+
+	var cycle = function () {
+		$("p").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {
+			console.log("chain - done encoding!");
+			var endText = bodyCopy; //"This is my new message";
+			$("p").cypher('decode', {
+				endText: endText,
+				scheme: "offset",
+				animate: "random"
+			}).done(pause);
+		});
+	}
+});
 {% endblock %}
