@@ -4,7 +4,7 @@ var build = {
 		TEMPLATE_DEBUG : false
 	},
 
-	STATIC_URL : ""
+	STATIC_URL : "static/"
 };
 
 module.exports = build;
