@@ -8,12 +8,14 @@
 <div class="replay-button" data-demoId="largeBlockOfText">Replay</div>
 
 <h2>Guess</h2>
+<p>The Guess scheme will actually try to guess each character individually starting with a random character and working it's way sequentially though an array or randomly sorted characters.</p>
 <p class="code">$(".guess").cypher('decode', {scheme: "guess"});</p>
 <h3 class="demo guess">Super secret decoded message for you</h3>
 <div class="replay-button" data-demoId="guess">Replay</div>
 
 
 <h2>Offset</h2>
+<p>The Guess scheme will cycle letters through a fixed number of characters and then reveal the final character once the cycle limit has been reached.</p>
 <h4>Left to right:</h4>
 <p class="code">$(".offset").cypher('decode', {scheme: "offset"});</p>
 <h3 class="demo offset">Super secret decoded message for you</h3>
