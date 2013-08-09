@@ -62,7 +62,17 @@ TODO: add ignore spaces
 			config.scheme = Schemes.timed;
 		}
 
-		config.characters = (config.alphabet + config.digits).split("");
+		if (config.characters === undefined) {
+			config.characters = (config.alphabet + config.digits).split("");
+		} else {
+			if (config.characters === "digits") {
+				config.characters = config.digits.split("");
+			}
+
+			if (config.characters === "alphabet") {
+				config.characters = config.alphabet.split("");
+			}
+		}
 
 
 		var methods = {
