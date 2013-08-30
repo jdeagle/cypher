@@ -1,8 +1,9 @@
 /*
 
 - cypher text -
-
 a pluggin for adding a encoding/decoding effect.
+
+https://github.com/jdeagle/cypher/
 
 <h3 class="demo">How now brown cow</h3>
 $(".demo").cypher('decode');
@@ -11,6 +12,9 @@ $(".demo").cypher('decode');
 TODO: implement timed version
 TODO: implement canvas use? Is this an issue?
 TODO: add ignore spaces
+
+
+
 
 */
 
@@ -58,8 +62,16 @@ TODO: add ignore spaces
 		}, options),
 			vars = {};
 
-		if (config.duration) {
+		if (config.duration || config.method === "count") {
 			config.scheme = Schemes.timed;
+
+			if (!config.duration) {
+				config.duration = 1000;
+			}
+
+			if (config.addZeros === undefined) {
+				config.addZeros = false;
+			}
 		}
 
 		if (config.characters === undefined) {
@@ -373,6 +385,49 @@ TODO: add ignore spaces
 			}
 
 		};
+
+		if (config.method === "count") {
+			// example
+			// $(".counter h2").cypher('count', {scheme: "timed", duration:2000, startText:"0000"}).done(this.startCount);
+
+			if (config.scheme === Schemes.timed) {
+
+				var total = parseInt(config.endText, 10),
+					padSize = total.toString().length,
+					pad = function (num, size) {
+						// http://stackoverflow.com/questions/2998784/how-to-output-integers-with-leading-zeros-in-javascript
+						var s = num + "";
+						while (s.length < size) s = "0" + s;
+						return s;
+					},
+					onStep = function (step) {
+						window.console.log("step", step, (total * step), total.toString().length);
+
+						// get percentage of total
+						var currentCount = Math.round(total * step);
+
+						if (config.addZeros) {
+							this.text(pad(currentCount, padSize));
+						} else {
+							this.text(currentCount);
+						}
+
+
+						if (currentCount === total) {
+							// fufil promise
+							_deferred.resolve();
+						}
+					};
+
+				var animationConfig = {
+					duration: config.duration,
+					ease: EASE.linear,
+					step: $.proxy(onStep, this)
+				};
+
+				methods.animate(animationConfig);
+			}
+		}
 
 		if (config.method === "decode") {
 
