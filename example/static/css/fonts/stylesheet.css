@@ -1,0 +1,11 @@
+
+@font-face {
+  font-family: 'stan0756';
+  src: url('stan0756.eot'); /* IE9 Compat Modes */
+  src: url('stan0756.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('stan0756.woff') format('woff'), /* Modern Browsers */
+       url('stan0756.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('stan0756.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,230 @@
+<!doctype html>
+
+<!--[if lt IE 8]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="dns-prefetch" href="static/" />
+		<link rel="static-url" href="static/" />
+
+		<title>Cypher</title>
+
+		<meta name="description" content="Examples for Cypher jquery plugin." />
+		<meta name="author" content="James Deagle" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" id="caboose" href="static/css/style.css" />
+
+
+	</head>
+	<body class="page">
+		<div id="container">
+			<header>
+			</header>
+			<div id="main" role="main">
+				<h1>Decode Animation tests</h1>
+
+				<h2>Large block of text</h2>
+				<p class="test">This is a large block of text. Lets see how well it decodes. Hopefully it won't take longer than it does for halflife 3 to come out.</p>
+				<div class="replay-button" data-demoId="largeBlockOfText">Replay</div>
+
+				<h2>Guess</h2>
+				<p>The Guess scheme will actually try to guess each character individually starting with a random character and working it's way sequentially though an array or randomly sorted characters.</p>
+				<p class="code">$(".guess").cypher('decode', {scheme: "guess"});</p>
+				<h3 class="demo guess">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="guess">Replay</div>
+
+
+				<h2>Offset</h2>
+				<p>The Guess scheme will cycle letters through a fixed number of characters and then reveal the final character once the cycle limit has been reached.</p>
+				<h4>Left to right:</h4>
+				<p class="code">$(".offset").cypher('decode', {scheme: "offset"});</p>
+				<h3 class="demo offset">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="offset">Replay</div>
+
+				<h4>Right to left:</h4>
+				<p class="code">$(".offset-right").cypher('decode', {scheme: "offset", animate: "rightToLeft"});</p>
+				<h3 class="demo offset-right">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="offsetRightToLeft">Replay</div>
+
+				<h4>Center out:</h4>
+				<p class="code">$(".offset-center-out").cypher('decode', {scheme: "offset", animate: "centerOut"});</p>
+				<h3 class="demo offset-center-out">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="offsetCenterOut">Replay</div>
+
+				<h4>Center in:</h4>
+				<p class="code">$(".offset-center-in").cypher('decode', {scheme: "offset", animate: "centerIn"});</p>
+				<h3 class="demo offset-center-in">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="offsetCenterIn">Replay</div>
+
+				<h4>Random:</h4>
+				<p class="code">$(".offset-random").cypher('decode', {scheme: "offset", animate: "random"});</p>
+				<h3 class="demo offset-random">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="offsetRandom">Replay</div>
+
+				<!--
+				<h2>Timed</h2>
+				<p class="code">$(".timed").cypher('decode', {scheme: "timed", duration:2000});</p>
+				<h3 class="demo timed">Super secret decoded message for you</h3>
+				!-->
+
+				<h2>delayed start</h2>
+				<p class="code">$(".delayed").cypher('decode', {delay: 2000});</p>
+				<h3 class="demo delayed">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="delayed">Replay</div>
+
+				<h2>cycle with delay</h2>
+				<p class="code">$(".cycle").cypher('decode', {delay: 2000, cycle: true});</p>
+				<h3 class="demo cycle">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="cycle">Replay</div>
+
+
+				<h1>Encode Animation tests</h1>
+				<h2>encode</h2>
+				<p class="code">$(".encode").cypher('encode', {scheme: "offset", animate: "random"});</p>
+				<h3 class="demo encode">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="encode">Replay</div>
+
+				<h2>promise</h2>
+				<p class="code">$(".promise").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {
+											console.log("promise - done encoding!");
+									});</p>
+				<h3 class="demo promise">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="promise">Replay</div>
+
+				<h2>chain</h2>
+				<p class="code">$(".chain").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {<br>
+					<span>console.log("chain - done encoding!");</span><br>
+					<span>var endText = "This is my new message";</span><br>
+					<span>$(".chain").cypher('decode', {</span><br>
+						<span class="i">endText: endText,</span><br>
+						<span class="i">scheme: "offset",</span><br>
+						<span class="i">animate: "random"</span><br>
+					<span>});</span><br>
+				});</p>
+				<h3 class="demo chain">Super secret decoded message for you</h3>
+				<div class="replay-button" data-demoId="chain">Replay</div>
+
+				<h2>Count</h2>
+				<p class="code">$(".count").cypher('count', {duration: 3000, startText: "0000", addZeros: true});</p>
+				<h3 class="demo count">2013</h3>
+				<div class="replay-button" data-demoId="count">Replay</div>
+			</div>
+		</div>
+
+		<script src="static/js/libs/require.js"></script>
+
+		<script>
+			require.config({
+				baseUrl : "static/js",
+				paths : {
+					"jquery" : "libs/jquery",
+					"cypher" : "libs/plugins/jquery/jquery.cypher"
+				}
+			});
+
+			require(["jquery"], function($) {
+				require(["cypher"], function() {
+
+					console.log("should be good to go");
+
+					window.replay = function (id) {
+						tests[id]();
+					}
+
+					$(".replay-button").on("click", function (e) {
+						var ele = $(e.currentTarget);
+						var id = ele.attr("data-demoId");
+						console.log(id);
+
+						window.replay(id);
+					});
+
+					var tests = {
+						all : function () {
+							this.largeBlockOfText();
+							this.guess();
+							this.offset();
+							this.offsetRightToLeft();
+							this.offsetCenterOut();
+							this.offsetCenterIn();
+							this.offsetRandom();
+							this.delayed();
+							this.promise();
+							this.chain();
+							this.count();
+						},
+						largeBlockOfText : function () {
+							$(".test").cypher('decode', {scheme: "offset", animate: "random"});
+						},
+
+						guess : function () {
+							$(".guess").cypher('decode', {scheme: "guess"});
+						},
+
+						offset : function () {
+							$(".offset").cypher('decode', {scheme: "offset"});
+						},
+
+						offsetRightToLeft : function () {
+							$(".offset-right").cypher('decode', {scheme: "offset", animate: "rightToLeft"});
+						},
+
+						offsetCenterOut : function () {
+							$(".offset-center-out").cypher('decode', {scheme: "offset", animate: "centerOut"});
+						},
+
+						offsetCenterIn : function () {
+							$(".offset-center-in").cypher('decode', {scheme: "offset", animate: "centerIn"});
+						},
+
+						offsetRandom : function () {
+							$(".offset-random").cypher('decode', {scheme: "offset", animate: "random"});
+						},
+
+						delayed : function () {
+							$(".delayed").cypher('decode', {delay: 2000});
+						},
+
+						cycle : function () {
+							$(".cycle").cypher('decode', {delay: 2000, cycle: true});
+						},
+
+						encode : function () {
+							$(".encode").cypher('encode', {scheme: "offset", animate: "random"});
+						},
+
+						promise : function () {
+							$(".promise").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {
+									console.log("promise - done encoding!");
+							});
+						},
+
+						chain : function () {
+							$(".chain").cypher('encode', {scheme: "offset", animate: "random"}).done(function () {
+								console.log("chain - done encoding!");
+								var endText = "This is my new message";
+								$(".chain").cypher('decode', {
+									endText: endText,
+									scheme: "offset",
+									animate: "random"
+								});
+							});
+						},
+
+						count : function () {
+							$(".count").cypher('count', {duration: 3000, startText: "0000", addZeros: true});
+						}
+
+					}
+
+					tests.all();
+
+
+				});
+			});
+
+		</script>
+	</body>
+</html>
